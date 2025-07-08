@@ -10,7 +10,7 @@ const Navbar = ({ onContactClick }) => {
         <li className="navbar-item">Projects</li>
       </ul>
       <button className="contact-btn" onClick={onContactClick}>
-        Contact
+        Contact Me
       </button>
     </nav>
   );
