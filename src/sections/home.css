@@ -1,5 +1,5 @@
 .home-section {
-  min-height: 60vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +20,7 @@
 }
 
 .home-section.code-bg {
-  min-height: 60vh;
+  min-height: 85vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -62,9 +62,22 @@
   transition: color 0.2s, transform 0.2s, text-shadow 0.2s;
 }
 
-.home-title {
+/* .home-title {
   font-size: 2.5rem;
   font-weight: 700;
+} */
+
+.home-title {
+  font-size: clamp(1rem, 6vw, 2.5rem); /* ✅ Responsive sizing */
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ffae33, #1a298033);
+  padding: 0.3rem 0.8rem;
+  border-radius: 10px;
+  max-width: 100%;               /* ✅ Limit to screen width */
+  text-align: center;
+  display: inline-block;         /* ✅ Shrinks to content naturally */
+  white-space: normal;           /* ✅ Allow text to wrap if needed */
+  overflow-wrap: break-word;     /* ✅ Handle long words properly */
 }
 
 .home-subtitle {
@@ -72,8 +85,8 @@
   font-weight: 500;
 }
 
-.typing-role.large-typing {
-  font-size: 2.1rem;
+/* .typing-role.large-typing {
+  font-size: 1.7rem;
   color: #fff;
   font-family: 'Fira Mono', 'Consolas', monospace, sans-serif;
   min-height: 2.5rem;
@@ -94,8 +107,49 @@
 }
 
 .fade {
-  opacity: 0.5; /* <-- Change this value to control how faded the typing animation is (0 = invisible, 1 = fully visible) */
+  opacity: 0.5;  <-- Change this value to control how faded the typing animation is (0 = invisible, 1 = fully visible) 
   transition: opacity 0.4s;
+} */
+
+.flip-role {
+  font-size: 1.7rem;
+  color: #fff;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  min-height: 2.5rem;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  perspective: 1000px; /* 🔥 adds 3D perspective */
+}
+
+.flip-role span {
+  display: inline-block;
+  animation: flip3D 0.3s ease-in-out forwards;
+  will-change: transform, opacity;
+  transform-origin: bottom center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* 🌀 Stylish flip with 3D depth */
+@keyframes flip3D {
+  0% {
+    transform: rotateX(90deg) scale(0.8);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  50% {
+    transform: rotateX(10deg) scale(1.05);
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  100% {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 .home-right {
@@ -174,16 +228,17 @@
     height: 160px;
   }
   .home-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* <-- Adjusted font size for mobile 1.5og*/
     text-align: center;
   }
   .home-subtitle {
-    font-size: 2.1rem;
+    font-size: 1.5rem;
     text-align: center;
   }
-  .typing-role.large-typing {
-    font-size: 1.2rem;
+  .flip-role {
+    font-size: 1.2rem; /* <-- typing-role.large-typing | smaller typing font for mobile 1.2 og*/
     text-align: center;
+    padding: 0 1rem; /* <-- add side padding */
   }
   .profile-img-wrapper {
     padding-left: 0;
