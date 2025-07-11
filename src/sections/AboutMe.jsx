@@ -11,7 +11,7 @@ import djangoIcon from "../assets/django.png";
 import iotIcon from "../assets/iot.png";
 import mobileIcon from "../assets/mobile.png";
 import phpIcon from "../assets/php.png";
-import cert1 from "../assets/cert1.png";
+import cert1 from "/cert1.png";
 
 const AboutMe = () => {
   return (
