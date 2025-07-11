@@ -85,51 +85,216 @@
   text-align: center;
 }
 
-/* 💡 You can adjust height and width of marquee bar here */
-.skills-marquee-container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 100px;
-  margin-top: 1rem;
-  border: 2px solid #00ffae33;
-  border-radius: 10px;
-  background: #1e1e1e;
-  box-shadow: 0 0 12px #00ffae44;
-}
-
-.skills-marquee-track {
+/* Experiences Section */
+.experiences-wrapper {
   display: flex;
-  gap: 30px; /* spacing between icons — replaces margin-right */
-  animation: scroll-marquee 20s linear infinite;
-  width: max-content;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
 }
 
-.skills-marquee-track.paused {
-  animation-play-state: paused;
+.experience-box {
+  background-color: #1e1e1e;
+  border: 1px solid #00ffae33;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 8px #00ffae22;
 }
 
-.skill-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: drop-shadow(0 0 3px #00ffaeaa);
-  transition: transform 0.3s ease;
+.experience-box h4 {
+  margin: 0 0 0.5rem 0;
+  color: #00ffae;
+  font-size: 1.1rem;
 }
 
-.skill-icon:hover {
-  transform: translateY(-5px) scale(1.1);
-  filter: drop-shadow(0 0 8px #00ffae);
+.experience-box p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.4;
 }
 
-/* Seamless infinite scroll keyframes */
-@keyframes scroll-marquee {
+.aboutme-lower-container {
+  max-width: 1200px;
+  margin: 4rem auto 0 auto;
+  display: flex;
+  gap: 3rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Skills Tags (Same as Bio styling) */
+.tag-list {
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 1rem 1rem 1rem; /* top right /bottom/ left */
+  background: grey;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem -0.25rem black;   
+  font-weight: bold;
+  /* brah below*/
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+  /* Neon glow animation */
+  /* animation: neonPulse 4s linear infinite; */
+  /* box-shadow: 0 0 10px #00ffae44; */
+}
+
+/* Shine effect */
+.tag-list li::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.0),
+    rgba(255, 255, 255, 0.05)
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tag-list li:hover {
+  transform: scale(1.1);
+  animation: neonBorderPulse 2s linear infinite;
+  /* border: 2px solid currentColor; */
+}
+
+.tag-list li:hover::before {
+  opacity: 1;
+  animation: shine 1.2s ease forwards;
+}
+
+/* Neon pulse animation on the font text */
+/* @keyframes neonPulse {
   0% {
-    transform: translateX(0%);
+    box-shadow: 0 0 10px #00ffae44;
+    color: #00ffae;
+  }
+  25% {
+    box-shadow: 0 0 12px #00eaff88;
+    color: #00eaff;
+  }
+  50% {
+    box-shadow: 0 0 12px #00c3ff88;
+    color: #00c3ff;
+  }
+  75% {
+    box-shadow: 0 0 12px #6f00ff88;
+    color: #6f00ff;
   }
   100% {
-    transform: translateX(-50%);
+    box-shadow: 0 0 10px #00ffae44;
+    color: #00ffae;
+  }
+} */
+
+/* Animate only border color and keep glow */
+@keyframes neonBorderPulse {
+  0%   { border-color: #00ffae; box-shadow: 0 0 10px #00ffae66; }
+  25%  { border-color: #00eaff; box-shadow: 0 0 12px #00eaff66; }
+  50%  { border-color: #00c3ff; box-shadow: 0 0 12px #00c3ff66; }
+  75%  { border-color: #6f00ff; box-shadow: 0 0 12px #6f00ff66; }
+  100% { border-color: #00ffae; box-shadow: 0 0 10px #00ffae66; }
+}
+
+/* Shine animation */
+@keyframes shine {
+  0% {
+    transform: rotate(25deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(25deg) translateX(100%);
   }
 }
+
+.tag-list img {
+  height: 50px;
+  width: 50px;
+  /* flex-shrink: 0;
+  transition: transform 0.2s ease-in-out; */
+}
+
+.tag-list img:hover {
+  transform: scale(1.1);
+}
+
+.scroller {
+  max-width: 600px; 
+  /* outline: 3px solid lime;  */
+  /* overflow: hidden; */
+}
+
+.inside-scroll {
+  display: flex;
+  gap: 1rem;
+  padding-block: 1rem;
+  flex-wrap: wrap;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  /* border: 5px solid lime; */
+  -webkit-mask: linear-gradient(
+    90deg, 
+    transparent, 
+    white 20%, 
+    white 80%, 
+    transparent
+  );
+
+  mask: linear-gradient(
+    90deg, 
+    transparent, 
+    white 20%, 
+    white 80%, 
+    transparent
+  );
+}
+
+.scroller[data-animated="true"] .inside-scroll {
+  width: max-content;
+  flex-wrap: nowrap;
+  /* animation: scroll 20s linear infinite; */
+  animation: scroll var(--_duration, 20s) linear infinite;
+  animation-direction: var(--_direction, forwards);
+}
+
+/* Speed presets */
+.scroller[data-speed="fast"] {
+  --_duration: 20s;
+}
+.scroller[data-speed="slow"] {
+  --_duration: 120s;
+}
+
+/* Direction presets */
+.scroller[data-direction="left"] {
+  --_direction: forwards;
+}
+.scroller[data-direction="right"] {
+  --_direction: reverse;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+/* .test {
+  background: red !important;
+} */
