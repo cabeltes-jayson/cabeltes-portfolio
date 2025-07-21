@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./aboutme.css";
 
-// Import skill icons
 import pythonIcon from "../assets/python.png";
 import jsIcon from "../assets/javascript.png";
 import reactIcon from "../assets/react.png";
@@ -11,23 +10,44 @@ import djangoIcon from "../assets/django.png";
 import iotIcon from "../assets/iot.png";
 import mobileIcon from "../assets/mobile.png";
 import phpIcon from "../assets/php.png";
-import cert1 from "/cert1.png";
+import cert1 from "/cert1.jpg";
+
+const skillIcons = [
+  pythonIcon, jsIcon, reactIcon, xamppIcon, cloudIcon,
+  djangoIcon, iotIcon, mobileIcon, phpIcon
+];
+
+const certificates = [
+  { img: cert1, title: "Python Mastery" },
+  { img: cert1, title: "React Specialist" },
+  { img: cert1, title: "IoT Innovator" },
+  { img: cert1, title: "Cloud Architect" }
+];
 
 const AboutMe = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalCert, setModalCert] = useState(null);
+
+  const openModal = (cert) => {
+    setModalCert(cert);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalCert(null);
+  };
+
   return (
     <section className="aboutme-section" id="aboutme">
-      {/* Centered Section Heading */}
       <h2 className="aboutme-heading">About Me</h2>
 
       <div className="aboutme-container">
-        {/* TopLeft - Bio */}
+        {/* Bio */}
         <div className="aboutme-left">
           <h3 className="section-title">Bio</h3>
           <p className="bio-description">
-            Dedicated B.S.I.T. student at the University of Science and Technology of Southern 
-            Philippines, recognized as a Cum Laude and a Master God-Supported Programmer, 
-            seeking a job to apply my skills in IT, including programming, database management, 
-            and system administration while gaining practical experience in the IT industry.
+            Dedicated B.S.I.T. student at the University of Science and Technology of Southern Philippines, recognized as a Cum Laude and a Master God-Supported Programmer, seeking a job to apply my skills in IT, including programming, database management, and system administration while gaining practical experience in the IT industry.
           </p>
           <div className="aboutme-info">
             <p><strong>Birthday:</strong> December 27, 2002</p>
@@ -41,76 +61,53 @@ const AboutMe = () => {
           </div>
         </div>
 
-        {/* TopRight - Certificates */}
+        {/* Certificates */}
         <div className="aboutme-right">
-          <h3 className="section-title">Certificates</h3>
-          <div className="certificates-wrapper">
-            {/* 🖼️ Replace these divs with <img src="..." /> later */}
-            <img src={cert1} alt="cert1" />
-            <div className="certificate-box">Certificate 2</div>
-            <div className="certificate-box">Certificate 3</div>
-            <div className="certificate-box">Certificate 4</div>
+          <div className="certificates-section">
+            <h3 className="section-title">Certificates</h3>
+            <div className="certificates-grid">
+              {certificates.map((cert, idx) => (
+                <div
+                  className="certificate-card"
+                  key={idx}
+                  onClick={() => openModal(cert)}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Open ${cert.title}`}
+                >
+                  <img src={cert.img} alt={cert.title} loading="lazy" />
+                  <span className="cert-title">{cert.title}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom - Skills and Experiences Section */}
+      {/* Skills & Experiences */}
       <div className="aboutme-lower-container">
-        {/* Left - Skills */}
+        {/* Skills */}
         <div className="aboutme-left">
-          <h3 className="section-title">Skills</h3>
-
-          <div className="scroller" data-speed="fast" data-animated="true" data-direction="left">
-            <ul className="tag-list inside-scroll">
-              <li>Python</li>
-              <li>Javascript</li>
-              <li>IoT</li>
-              <li>React</li>
-              <li>PHP</li>
-              <li>Django</li>
-              <li>Cloud</li>
-              <li>XAMPP</li>
-
-              <li>Python</li>
-              <li>Javascript</li>
-              <li>IoT</li>
-              <li>React</li>
-              <li>PHP</li>
-              <li>Django</li>
-              <li>Cloud</li>
-              <li>XAMPP</li>
-            </ul>
-          </div>
-
-          {/* ICONS */}
-          <div className="scroller" data-speed="fast" data-animated="true" data-direction="right">
-            <div className="tag-list inside-scroll">
-              <img src={pythonIcon} alt="Django" />
-              <img src={jsIcon} alt="Javascript" />
-              <img src={reactIcon} alt="React" />
-              <img src={xamppIcon} alt="XAMPP" />
-              <img src={cloudIcon} alt="Cloud" />
-              <img src={djangoIcon} alt="Django" />
-              <img src={iotIcon} alt="IoT" />
-              <img src={mobileIcon} alt="Mobile" />
-              <img src={phpIcon} alt="PHP" />
-
-              <img src={pythonIcon} alt="Django" />
-              <img src={jsIcon} alt="Javascript" />
-              <img src={reactIcon} alt="React" />
-              <img src={xamppIcon} alt="XAMPP" />
-              <img src={cloudIcon} alt="Cloud" />
-              <img src={djangoIcon} alt="Django" />
-              <img src={iotIcon} alt="IoT" />
-              <img src={mobileIcon} alt="Mobile" />
-              <img src={phpIcon} alt="PHP" />
+          <div className="skills-section">
+            <h3 className="section-title">Skills</h3>
+            {/* Single seamless infinite scroll */}
+            <div className="skills-scroller" data-animated="true">
+              <div className="skills-scroll-track">
+                {[...skillIcons, ...skillIcons].map((icon, idx) => (
+                  <img
+                    key={idx}
+                    src={icon}
+                    alt="Skill Icon"
+                    className="skill-icon"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
             </div>
-          
           </div>
-
         </div>
 
-        {/* Right - Experiences */}
+        {/* Experiences */}
         <div className="aboutme-right">
           <h3 className="section-title">Experiences</h3>
           <div className="experiences-wrapper">
@@ -133,6 +130,17 @@ const AboutMe = () => {
           </div>
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      {modalOpen && modalCert && (
+        <div className="cert-modal-overlay" onClick={closeModal}>
+          <div className="cert-modal large" onClick={e => e.stopPropagation()}>
+            <button className="cert-modal-close" onClick={closeModal}>&times;</button>
+            <h3 className="cert-modal-title">{modalCert.title}</h3>
+            <img src={modalCert.img} alt={modalCert.title} className="cert-modal-img" />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
