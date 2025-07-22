@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./aboutme.css";
-
 import pythonIcon from "../assets/python.png";
 import jsIcon from "../assets/javascript.png";
 import reactIcon from "../assets/react.png";
@@ -10,7 +9,10 @@ import djangoIcon from "../assets/django.png";
 import iotIcon from "../assets/iot.png";
 import mobileIcon from "../assets/mobile.png";
 import phpIcon from "../assets/php.png";
-import cert1 from "/cert1.jpg";
+import bfpcert from "/bfpcert.jpg";
+import tbc from "/tbc.png";
+import wad1 from "/wadwahni1.png";
+import wad2 from "/wadwahni2.png";
 
 const skillIcons = [
   pythonIcon, jsIcon, reactIcon, xamppIcon, cloudIcon,
@@ -18,10 +20,10 @@ const skillIcons = [
 ];
 
 const certificates = [
-  { img: cert1, title: "Python Mastery" },
-  { img: cert1, title: "React Specialist" },
-  { img: cert1, title: "IoT Innovator" },
-  { img: cert1, title: "Cloud Architect" }
+  { img: tbc, title: "B.S.I.T Degree" },
+  { img: bfpcert, title: "On-Job-Training Certificate" },
+  { img: wad1, title: "Wadwahni Skilling: Problem Solving & Innovation" },
+  { img: wad2, title: "Wadwahni Skilling: Impactful Writing Skills" }
 ];
 
 const AboutMe = () => {
@@ -47,7 +49,8 @@ const AboutMe = () => {
         <div className="aboutme-left">
           <h3 className="section-title">Bio</h3>
           <p className="bio-description">
-            Dedicated B.S.I.T. student at the University of Science and Technology of Southern Philippines, recognized as a Cum Laude and a Master God-Supported Programmer, seeking a job to apply my skills in IT, including programming, database management, and system administration while gaining practical experience in the IT industry.
+            A dedicated Bachelor of Science in Information Technology graduate from the University of Science and Technology of Southern Philippines, recognized as Cum Laude.
+            Seeking a job to apply my skills in IT, including programming, system development, and system administration while gaining practical experience in the IT industry.
           </p>
           <div className="aboutme-info">
             <p><strong>Birthday:</strong> December 27, 2002</p>
@@ -113,10 +116,10 @@ const AboutMe = () => {
           <div className="experiences-wrapper">
             <div className="experience-box">
               <h4>Bureau of Fire Protection</h4>
-              <p>Worked as IT support and developed a website.</p>
+              <p>Worked as IT support and developed a system.</p>
             </div>
-            <div className="experience-box">
-              <h4>Experience Title 2</h4>
+            {/* <div className="experience-box">
+              <h4>Capstone/Thesis</h4>
               <p>Short description about this experience.</p>
             </div>
             <div className="experience-box">
@@ -126,7 +129,7 @@ const AboutMe = () => {
             <div className="experience-box">
               <h4>Experience Title 4</h4>
               <p>Short description about this experience.</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
