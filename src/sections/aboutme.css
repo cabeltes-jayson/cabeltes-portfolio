@@ -64,7 +64,6 @@
 
 /* Skills Section */
 .skills-section {
-  margin-top: 3rem;
   width: 100%;
   text-align: center;
 }
@@ -113,7 +112,6 @@
 
 /* Certificates Section */
 .certificates-section {
-  margin-top: 2rem;
   width: 100%;
 }
 
@@ -131,12 +129,15 @@
   box-shadow: 0 0 16px #00ffae44;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
   padding: 1rem 0.5rem;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   cursor: pointer;
   position: relative;
+  height: 100%; /* ensures card fills grid cell */
 }
+
 .certificate-card:hover {
   transform: scale(1.07);
   box-shadow: 0 0 24px #00ffaecc;
@@ -159,6 +160,10 @@
   font-weight: bold;
   text-align: center;
   margin-top: 0.2rem;
+  flex: 1; /* take available vertical space */
+  display: flex;
+  align-items: center;    /* vertical center */
+  justify-content: center;/* horizontal center */
 }
 
 /* Certificate Modal */

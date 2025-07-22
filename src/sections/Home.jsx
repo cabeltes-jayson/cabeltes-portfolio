@@ -6,7 +6,7 @@ import pixelBg from "../assets/pixel-background.gif";
 const roles = [
   "Full-Stack Developer",
   "IoT Developer",
-  "Master Programmer"
+  "Web Developer"
 ];
 
 // You can adjust the typing and erasing speed here:
